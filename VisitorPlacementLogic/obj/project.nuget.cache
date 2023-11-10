@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZtBMblUZwG0cJYxDW9G160ZpX1eFFjKivH4OtNQi3hjYKaPFB6CN5u70+ucGL9h9m8l194hJHk2LJFtrCvH+dQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Huijb\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

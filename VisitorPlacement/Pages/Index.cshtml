@@ -1,0 +1,96 @@
+﻿@page
+@using VisitorPlacementModels
+@model IndexModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Seating</title>
+</head>
+<body>
+
+    <div class="container">
+    
+    <div id="parcours" class="text-center h2">Parcours</div>
+    <h3>Total Seats: @Model.TotalSeats</h3>
+        <div class="row mx-auto justify-content-around" id="section-container">
+            @foreach (var sect in Model.Sections)
+            {
+                <div class="section col-md-@(sect.SeatsPerRow / 2)">
+                    <h2 class="text-center">@sect.Name @sect.TotalSeats</h2>
+                    @for (int row = 1; row <= sect.Rows; row++)
+                    {
+                        <div class="row flex">
+                            @for (int seat = 1; seat <= sect.SeatsPerRow; seat++)
+                            {
+                                var seatIdentifier = $"{sect.Name}-{row}-{seat}";
+                                var visitor = Model.Visitors.FirstOrDefault(v => v.SectionName == sect.Name && v.RowNumber == row && v.SeatNumber == seat);
+                                <div class="seat" style="width: calc((100% / @sect.SeatsPerRow) - 2px);">
+                                    @if (visitor != null)
+                                    {
+                                        <span class="hover-text"> @{
+                                                if (visitor.IsAdult)
+                                                { 
+                                                    <span class="hover-text">&#128104</span>  
+                                                }
+                                                else
+                                                {
+                                                    <span class="hover-text">&#128118</span>
+                                                }
+                                            }
+                                            <span class="tooltip-text">
+                                                <p>#@visitor.Id</p>
+                                                <p>@visitor.Name</p>
+                                                @{
+                                                    if (visitor.IsAdult)
+                                                    {
+                                                        <p>Adult</p>
+                                                    }
+                                                    else{
+                                                        <p>Child</p>
+                                                    }
+                                                }
+                                            </span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        @seatIdentifier
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+ 
+    <div class="container">
+        <table id="visitor-table">
+            <tr>
+                <th>Name</th>
+                <th>Date of birth</th>
+                <th>Registration Date</th>
+            </tr>
+            @foreach (var person in Model.Visitors)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.DateOfBirth</td>
+                    <td>@person.RegistrationDate</td>
+                </tr>
+                
+            }
+            
+        </table>
+        
+    </div>
+
+    <script src="~/js/site.js"></script>
+
+</body>
+
+</html>
+
