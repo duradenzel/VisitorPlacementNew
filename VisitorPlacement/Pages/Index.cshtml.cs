@@ -11,7 +11,7 @@ namespace VisitorPlacement.Pages
         public List<Visitor> Visitors { get; set; }
         public List<Group> Groups {get; set; }
 
-        public int TotalSeats { get; set; }
+       
 
         public async void OnGet()
         {
@@ -19,9 +19,8 @@ namespace VisitorPlacement.Pages
             VisitorService _visitorService = new();
             
             Visitors = await _visitorService.GenerateRandomVisitors(40);
-            Sections = _seatingService.GenerateEventSeating(Visitors.Count);
-            Groups = _visitorService.GenerateGroups(Visitors);
-            TotalSeats = Sections.Sum(s => s.TotalSeats);
+            Sections = _seatingService.GenerateEventSeating();
+            Groups = _visitorService.GenerateGroups(Visitors);            
             Groups = _seatingService.AssignGroupsToSeats(Groups, Sections);
                       
         }

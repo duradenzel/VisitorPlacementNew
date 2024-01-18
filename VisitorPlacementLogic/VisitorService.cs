@@ -35,15 +35,13 @@ namespace VisitorPlacementLogic
         {
             Random r = new Random();
             List<Visitor> visitorsCopy = new List<Visitor>(visitors);
-            
-            
 
             List<Group> groups = new List<Group>();
 
-            int groupSize = new Random().Next(1,8);
 
             while (visitorsCopy.Any())
             {
+                int groupSize = r.Next(1,8);
                 var currentGroup = visitorsCopy.Take(groupSize).ToList();
 
                 if (currentGroup.Any(v => v.IsAdult)){

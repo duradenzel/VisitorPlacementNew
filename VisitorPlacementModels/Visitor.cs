@@ -21,7 +21,12 @@ namespace VisitorPlacementModels
 
         public DateTime RegistrationDate { get; set; }
 
-        
+        public void AssignSeat(Seat seat)
+    {
+        SectionName = seat.Row.Section.Name;
+        RowNumber = seat.Row.Number;
+        SeatNumber = seat.Number;
+    }
 
     } 
 }

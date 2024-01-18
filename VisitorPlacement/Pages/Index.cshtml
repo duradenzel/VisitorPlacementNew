@@ -9,67 +9,35 @@
 </head>
 <body>
     <div class="container">
-        <div id="parcours" class="text-center h2">Parcours</div>
-        <h3>Total Seats: @Model.TotalSeats</h3>
-        <div class="row mx-auto justify-content-around" id="section-container">
-            @foreach (var sect in Model.Sections)
-            {
-                <div class="section col-md-@(sect.SeatsPerRow / 2)">
-                    <h2 class="text-center">@sect.Name @sect.TotalSeats</h2>
-                    @for (int row = 1; row <= sect.Rows; row++)
-                    {
-                        <div class="row flex">
-                            @for (int seat = 1; seat <= sect.SeatsPerRow; seat++)
-                            {
-                                var seatIdentifier = $"{sect.Name}-{row}-{seat}";
+    <div id="parcours" class="text-center h2">Parcours</div>
+    <div class="row mx-auto justify-content-around" id="section-container">
+        @foreach (var sect in Model.Sections)
+        {
+            <div class="section col-md-@(sect.Rows[0].Seats.Count / 2)">
+                <h2 class="text-center">@sect.Name</h2>
+                @for (int row = 1; row <= sect.Rows.Count; row++)
+                {
+                    <div class="row flex">
+                        @for (int seat = 1; seat <= sect.Rows[0].Seats.Count; seat++)
+                        {
+                            var currentSeat = sect.Rows[row - 1].Seats[seat - 1];
+                            var visitor = Model.Visitors.FirstOrDefault(v => v.SectionName == sect.Name && v.RowNumber == row && v.SeatNumber == seat);
 
-                                // Find the visitor in any group for the current seat
-                                var visitor = Model.Groups
-                                    .SelectMany(g => g.Visitors)
-                                    .FirstOrDefault(v => v.SectionName == sect.Name && v.RowNumber == row && v.SeatNumber == seat);
-
-                                <div class="seat" style="width: calc((100% / @sect.SeatsPerRow) - 2px);">
-                                    @if (visitor != null)
-                                    {
-                                        <span class="hover-text">
-                                            @{
-                                                if (visitor.IsAdult)
-                                                {
-                                                    <span class="hover-text">&#128104</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="hover-text">&#128118</span>
-                                                }
-                                            }
-                                            <span class="tooltip-text">
-                                                <p>#@visitor.Id</p>
-                                                <p>@visitor.Name</p>
-                                                @{
-                                                    if (visitor.IsAdult)
-                                                    {
-                                                        <p>Adult</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        <p>Child</p>
-                                                    }
-                                                }
-                                            </span>
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        @seatIdentifier
-                                    }
-                                </div>
-                            }
-                        </div>
-                    }
-                </div>
-            }
-        </div>
+                            <div class="seat" style="width: calc((100% / @sect.Rows[0].Seats.Count) - 2px);">
+                                @if (visitor != null)
+                                {
+                                    <div class="visitor">
+                                        @visitor.Name
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
     </div>
+</div>
 
     <div class="container">
         <table id="visitor-table">
@@ -77,22 +45,28 @@
                 <th>Name</th>
                 <th>Date of birth</th>
                 <th>Registration Date</th>
+                <th>Section</th>
+                <th>Row</th>
+                <th>Seat</th>
             </tr>
             @foreach (var group in Model.Groups)
             {
-                foreach (var person in group.Visitors)
+                foreach (var visitor in group.Visitors)
                 {
                     <tr>
-                        <td>@person.Name</td>
-                        <td>@person.DateOfBirth</td>
-                        <td>@person.RegistrationDate</td>
+                        <td>@visitor.Name</td>
+                        <td>@visitor.DateOfBirth</td>
+                        <td>@visitor.RegistrationDate</td>
+                        <td>@visitor.SectionName</td>
+                        <td>@visitor.RowNumber</td>
+                        <td>@visitor.SeatNumber</td>
+
                     </tr>
                 }
             }
         </table>
     </div>
 
-    <script src="~/js/site.js"></script>
 </body>
 
 

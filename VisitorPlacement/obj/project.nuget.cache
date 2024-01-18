@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lxy9bgQpzYfVCzHgCBV32tTQrcMrFwjQ8LJBsA7a9JcZpW0Ic9x+XAFnbtoa/UCaew7dZaZG7SsgMBoiOan8Tw==",
+  "dgSpecHash": "F8wr+RviCW4ES9bnyn+pKQLGrVlPFhQiCk0IhH4DBMwHRMsb+FcOMuat8BUlwA9jj00OpfBNcsyabAWPZEqE9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
+  "projectFilePath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Huijb\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
     "C:\\Users\\Huijb\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512"

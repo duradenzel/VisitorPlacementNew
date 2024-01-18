@@ -6,54 +6,57 @@ namespace VisitorPlacementLogic
     {
         Random r = new Random();
         
-        public List<Section> GenerateEventSeating(int visitors = 10)
+        public List<Section> GenerateEventSeating()
         {
-            
             var sections = new List<Section>
-        {
-            new Section { Name = "A", Rows = r.Next(1, 4), SeatsPerRow = r.Next(3, 11) },
-            new Section { Name = "B", Rows = r.Next(1, 4), SeatsPerRow = r.Next(3, 11) },
-            new Section { Name = "C", Rows = r.Next(1, 4), SeatsPerRow = r.Next(3, 11) },
-            new Section { Name = "D", Rows = r.Next(1, 4), SeatsPerRow = r.Next(3, 11) },
-        };
+            {
+                new Section("A", r.Next(1, 4), r.Next(3, 11)),
+                new Section("B", r.Next(1, 4), r.Next(3, 11)),
+                new Section("C", r.Next(1, 4), r.Next(3, 11)),
+                new Section("D", r.Next(1, 4), r.Next(3, 11)),
+            };
 
             return sections;
         }
 
 
-        public List<Group> AssignGroupsToSeats(List<Group> groups, List<Section> sections)
+       public List<Group> AssignGroupsToSeats(List<Group> groups, List<Section> sections)
+    {
+        foreach (var group in groups)
         {
-            int groupIndex = 0;
+            foreach (var visitor in group.Visitors)
+            {
+                var seat = FindAvailableSeat(sections);
 
+                if (seat != null)
+                {
+                    visitor.AssignSeat(seat);
+                    seat.Occupied = true;
+                }
+                else
+                {
+                    // Handle case where no seat is available
+                }
+            }
+        }
+
+        return groups;
+    }
+
+        private Seat FindAvailableSeat(List<Section> sections)
+        {
             foreach (var section in sections)
             {
-                int rowIndex = 1;
-
-                while (groupIndex < groups.Count)
+                var seat = section.FindAvailableSeat();
+                if (seat != null)
                 {
-                    var currentGroup = groups[groupIndex];
-
-                    foreach (var currentVisitor in currentGroup.Visitors)
-                    {
-                        if (rowIndex <= section.Rows)
-                        {
-                            for (int seat = 1; seat <= section.SeatsPerRow; seat++)
-                            {
-                                currentVisitor.SectionName = section.Name;
-                                currentVisitor.RowNumber = rowIndex;
-                                currentVisitor.SeatNumber = seat;
-    
-                            }
-                            rowIndex++;
-                        }
-                    }
-
-                    groupIndex++;
+                    return seat;
                 }
             }
 
-            return groups;
+            return null;
         }
+
 
 
 
