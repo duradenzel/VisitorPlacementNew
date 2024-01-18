@@ -10,7 +10,7 @@ namespace VisitorPlacementLogic
 {
     public class VisitorService
     {
-        public List<Visitor> GenerateRandomVisitors(int count)
+        public async Task<List<Visitor>> GenerateRandomVisitors(int count)
         {
             var visitors = new List<Visitor>();
 
@@ -33,9 +33,37 @@ namespace VisitorPlacementLogic
 
         public List<Group> GenerateGroups(List<Visitor> visitors)
         {
+            Random r = new Random();
+            List<Visitor> visitorsCopy = new List<Visitor>(visitors);
+            
+            
+
             List<Group> groups = new List<Group>();
 
+            int groupSize = new Random().Next(1,8);
+
+            while (visitorsCopy.Any())
+            {
+                var currentGroup = visitorsCopy.Take(groupSize).ToList();
+
+                if (currentGroup.Any(v => v.IsAdult)){
+                    visitorsCopy.RemoveAll(v => currentGroup.Contains(v));
+                    var group = new Group
+                    {
+                        Visitors = currentGroup,
+                        RegistrationDate = currentGroup.First(v => v.IsAdult).RegistrationDate
+                    };
+                    groups.Add(group);
+                }
+                else{
+                    visitorsCopy.OrderBy(v => r.Next());
+                }
+            }
+
             return groups;
+            
         }
+
+
     }
 }

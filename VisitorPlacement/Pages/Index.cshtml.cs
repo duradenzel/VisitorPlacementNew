@@ -9,22 +9,23 @@ namespace VisitorPlacement.Pages
     {
         public List<Section> Sections { get; set; }
         public List<Visitor> Visitors { get; set; }
+        public List<Group> Groups {get; set; }
 
         public int TotalSeats { get; set; }
 
-        public void OnGet()
+        public async void OnGet()
         {
             SeatingService _seatingService = new();
             VisitorService _visitorService = new();
             
-
-
-            Sections = _seatingService.GenerateEventSeating();
-            Visitors = _visitorService.GenerateRandomVisitors(40);
-            Visitors = _seatingService.AssignVisitorsToSeats(Visitors, Sections);
-             TotalSeats = Sections.Sum(s => s.TotalSeats);
-            
-            
+            Visitors = await _visitorService.GenerateRandomVisitors(40);
+            Sections = _seatingService.GenerateEventSeating(Visitors.Count);
+            Groups = _visitorService.GenerateGroups(Visitors);
+            TotalSeats = Sections.Sum(s => s.TotalSeats);
+            Groups = _seatingService.AssignGroupsToSeats(Groups, Sections);
+                      
         }
+
+        
     }
 }

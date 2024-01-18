@@ -6,7 +6,7 @@ namespace VisitorPlacementLogic
     {
         Random r = new Random();
         
-        public List<Section> GenerateEventSeating()
+        public List<Section> GenerateEventSeating(int visitors = 10)
         {
             
             var sections = new List<Section>
@@ -21,29 +21,42 @@ namespace VisitorPlacementLogic
         }
 
 
-        public List<Visitor> AssignVisitorsToSeats(List<Visitor> visitors, List<Section> sections)
+        public List<Group> AssignGroupsToSeats(List<Group> groups, List<Section> sections)
         {
-            int visitorIndex = 0;
+            int groupIndex = 0;
 
             foreach (var section in sections)
             {
-                for (int row = 1; row <= section.Rows; row++)
+                int rowIndex = 1;
+
+                while (groupIndex < groups.Count)
                 {
-                    for (int seat = 1; seat <= section.SeatsPerRow; seat++)
+                    var currentGroup = groups[groupIndex];
+
+                    foreach (var currentVisitor in currentGroup.Visitors)
                     {
-                        if (visitorIndex < visitors.Count)
+                        if (rowIndex <= section.Rows)
                         {
-                            visitors[visitorIndex].SectionName = section.Name;
-                            visitors[visitorIndex].RowNumber = row;
-                            visitors[visitorIndex].SeatNumber = seat;
-                            visitorIndex++;
+                            for (int seat = 1; seat <= section.SeatsPerRow; seat++)
+                            {
+                                currentVisitor.SectionName = section.Name;
+                                currentVisitor.RowNumber = rowIndex;
+                                currentVisitor.SeatNumber = seat;
+    
+                            }
+                            rowIndex++;
                         }
                     }
+
+                    groupIndex++;
                 }
             }
 
-            return visitors;
+            return groups;
         }
+
+
+
 
     }
 

@@ -7,8 +7,5 @@
         public int SeatsPerRow { get; set; }
         public int TotalSeats => SeatsPerRow * Rows;
 
-        
-          
-
     }
 }

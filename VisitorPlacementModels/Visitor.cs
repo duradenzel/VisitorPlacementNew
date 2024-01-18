@@ -20,8 +20,8 @@ namespace VisitorPlacementModels
         public string SectionName { get; set; } 
 
         public DateTime RegistrationDate { get; set; }
-   
-    }
 
-    
+        
+
+    } 
 }
