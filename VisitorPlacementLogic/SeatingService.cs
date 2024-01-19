@@ -25,19 +25,37 @@ namespace VisitorPlacementLogic
             groups = groups.OrderByDescending(g => g.RegistrationDate).ToList();
             foreach (var group in groups)
             {
-                
+                var children = group.Visitors.Where(v => !v.IsAdult).ToList();
+                var adults = group.Visitors.Where(v => v.IsAdult).ToList();
 
-                foreach (var visitor in group.Visitors)
+
+
+                foreach (var child in children)
                 {
                     var seat = FindAvailableSeat(sections);
 
                     if (seat != null)
                     {
-                        visitor.AssignSeat(seat);
-                        seat.Occupied = true;
+                        child.AssignSeat(seat);
+                        seat.Occupied = true;                      
+
                     }
                     else{}
                 }
+                  if (adults.Any())
+                {
+                    var adult = adults.First();
+                    var nextSeat = FindAvailableSeat(sections);
+
+                    if (nextSeat != null)
+                    {
+                        adult.AssignSeat(nextSeat);
+                        nextSeat.Occupied = true;
+                        adults.Remove(adult);
+                    }
+                    else{}
+                }
+                
             }
             return groups;
         }

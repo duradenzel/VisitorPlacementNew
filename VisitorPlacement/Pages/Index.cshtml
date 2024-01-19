@@ -28,7 +28,8 @@
                                 {
                                     var type = visitor.IsAdult ? "adult" : "child";
                                     <div class="visitor @type">
-                                        @visitor.GroupId
+                                        <p>#@visitor.Id</p>
+                                        <p>@visitor.GroupId</p>
                                     </div>
                                 }
                             </div>
