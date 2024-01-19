@@ -8,6 +8,7 @@ namespace VisitorPlacementModels
 {
     public class Group
     {
+        public int Id {get; set;}
         public List<Visitor> Visitors { get; set; } = new List<Visitor>();
         public DateTime RegistrationDate { get; set; }
 

@@ -12,7 +12,6 @@ namespace VisitorPlacementModels
         public string Name { get; set; } 
         public DateTime DateOfBirth { get; set; } 
         public bool IsAdult { get; set; } 
-        public int EventId { get; set; } 
         public int GroupId { get; set; }
         public int SeatNumber { get; set; }
 
@@ -22,11 +21,11 @@ namespace VisitorPlacementModels
         public DateTime RegistrationDate { get; set; }
 
         public void AssignSeat(Seat seat)
-    {
-        SectionName = seat.Row.Section.Name;
-        RowNumber = seat.Row.Number;
-        SeatNumber = seat.Number;
-    }
+        {
+            SectionName = seat.Row.Section.Name;
+            RowNumber = seat.Row.Number;
+            SeatNumber = seat.Number;
+        }
 
     } 
 }

@@ -26,8 +26,9 @@
                             <div class="seat" style="width: calc((100% / @sect.Rows[0].Seats.Count) - 2px);">
                                 @if (visitor != null)
                                 {
-                                    <div class="visitor">
-                                        @visitor.Name
+                                    var type = visitor.IsAdult ? "adult" : "child";
+                                    <div class="visitor @type">
+                                        @visitor.GroupId
                                     </div>
                                 }
                             </div>
@@ -45,6 +46,8 @@
                 <th>Name</th>
                 <th>Date of birth</th>
                 <th>Registration Date</th>
+                <th>Adult</th>
+                <th>Group Id</th>
                 <th>Section</th>
                 <th>Row</th>
                 <th>Seat</th>
@@ -57,6 +60,8 @@
                         <td>@visitor.Name</td>
                         <td>@visitor.DateOfBirth</td>
                         <td>@visitor.RegistrationDate</td>
+                        <td>@visitor.IsAdult</td>
+                        <td>@visitor.GroupId</td>
                         <td>@visitor.SectionName</td>
                         <td>@visitor.RowNumber</td>
                         <td>@visitor.SeatNumber</td>

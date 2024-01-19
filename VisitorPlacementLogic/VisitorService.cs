@@ -34,6 +34,7 @@ namespace VisitorPlacementLogic
         public List<Group> GenerateGroups(List<Visitor> visitors)
         {
             Random r = new Random();
+            int groupId = 1;
             List<Visitor> visitorsCopy = new List<Visitor>(visitors);
 
             List<Group> groups = new List<Group>();
@@ -46,8 +47,10 @@ namespace VisitorPlacementLogic
 
                 if (currentGroup.Any(v => v.IsAdult)){
                     visitorsCopy.RemoveAll(v => currentGroup.Contains(v));
+                    currentGroup.ForEach(v => v.GroupId = groupId);
                     var group = new Group
                     {
+                        Id = groupId,
                         Visitors = currentGroup,
                         RegistrationDate = currentGroup.First(v => v.IsAdult).RegistrationDate
                     };
@@ -56,10 +59,26 @@ namespace VisitorPlacementLogic
                 else{
                     visitorsCopy.OrderBy(v => r.Next());
                 }
+                groupId++;
             }
 
             return groups;
             
+        }
+
+        public List<Visitor> UpdateVisitorIds(List<Group> groups, List<Visitor> visitors){
+              foreach (var group in groups)
+            {
+                foreach (var visitor in group.Visitors)
+                {
+                    var v = visitors.FirstOrDefault(v => v.Id == visitor.Id);
+                    if (v != null)
+                    {
+                        v.GroupId = group.Id;
+                    }
+                }
+            }
+            return visitors;
         }
 
 

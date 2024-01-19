@@ -21,27 +21,26 @@ namespace VisitorPlacementLogic
 
 
        public List<Group> AssignGroupsToSeats(List<Group> groups, List<Section> sections)
-    {
-        foreach (var group in groups)
         {
-            foreach (var visitor in group.Visitors)
+            groups = groups.OrderByDescending(g => g.RegistrationDate).ToList();
+            foreach (var group in groups)
             {
-                var seat = FindAvailableSeat(sections);
+                
 
-                if (seat != null)
+                foreach (var visitor in group.Visitors)
                 {
-                    visitor.AssignSeat(seat);
-                    seat.Occupied = true;
-                }
-                else
-                {
-                    // Handle case where no seat is available
+                    var seat = FindAvailableSeat(sections);
+
+                    if (seat != null)
+                    {
+                        visitor.AssignSeat(seat);
+                        seat.Occupied = true;
+                    }
+                    else{}
                 }
             }
+            return groups;
         }
-
-        return groups;
-    }
 
         private Seat FindAvailableSeat(List<Section> sections)
         {
@@ -56,11 +55,6 @@ namespace VisitorPlacementLogic
 
             return null;
         }
-
-
-
-
-
     }
 
 }

@@ -22,7 +22,7 @@ namespace VisitorPlacement.Pages
             Sections = _seatingService.GenerateEventSeating();
             Groups = _visitorService.GenerateGroups(Visitors);            
             Groups = _seatingService.AssignGroupsToSeats(Groups, Sections);
-                      
+            Visitors = _visitorService.UpdateVisitorIds(Groups, Visitors);        
         }
 
         

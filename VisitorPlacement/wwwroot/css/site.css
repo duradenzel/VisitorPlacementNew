@@ -54,6 +54,13 @@ body {
     font-size: 12px;
 }
 
+.adult{
+    background-color: #a36abf;
+}
+
+.child{
+    background-color: #6abbbf;
+}
 
 table {
     border-collapse: collapse;
@@ -97,4 +104,3 @@ tr:nth-child(even) {
     left: -50%;
 }
 
-#
