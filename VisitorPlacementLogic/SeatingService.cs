@@ -28,36 +28,40 @@ namespace VisitorPlacementLogic
                 var children = group.Visitors.Where(v => !v.IsAdult).ToList();
                 var adults = group.Visitors.Where(v => v.IsAdult).ToList();
 
-
-
                 foreach (var child in children)
-                {
-                    var seat = FindAvailableSeat(sections);
-
-                    if (seat != null)
-                    {
-                        child.AssignSeat(seat);
-                        seat.Occupied = true;                      
-
-                    }
-                    else{}
+                {                
+                   PlaceVisitor(child, sections);
                 }
-                  if (adults.Any())
+                  if (adults.Any() && children.Any())
                 {
                     var adult = adults.First();
-                    var nextSeat = FindAvailableSeat(sections);
+                    PlaceVisitor(adult, sections);
+                    adults.Remove(adult);
 
-                    if (nextSeat != null)
-                    {
-                        adult.AssignSeat(nextSeat);
-                        nextSeat.Occupied = true;
-                        adults.Remove(adult);
-                    }
-                    else{}
                 }
-                
             }
+                foreach (var group in groups)
+                {
+                    var remainingAdults = group.Visitors.Where(v => v.IsAdult && !(v.SeatNumber > 0)).ToList();
+                    foreach (var adult in remainingAdults)
+                    {
+                        PlaceVisitor(adult, sections);
+                    }
+                }
+
             return groups;
+        }
+
+         private void PlaceVisitor(Visitor visitor, List<Section> sections)
+        {  
+                var seat = FindAvailableSeat(sections);
+
+                if (seat != null)
+                {
+                    visitor.AssignSeat(seat);
+                    seat.Occupied = true;
+                }
+            
         }
 
         private Seat FindAvailableSeat(List<Section> sections)
