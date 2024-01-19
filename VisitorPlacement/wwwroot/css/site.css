@@ -104,3 +104,9 @@ tr:nth-child(even) {
     left: -50%;
 }
 
+
+
+.disallowed{
+    opacity: 0.7;
+    color: #991e36;
+}

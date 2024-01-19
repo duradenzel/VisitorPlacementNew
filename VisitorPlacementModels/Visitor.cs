@@ -20,6 +20,8 @@ namespace VisitorPlacementModels
 
         public DateTime RegistrationDate { get; set; }
 
+        public bool IsAllowedAccess { get; set; }
+
         public void AssignSeat(Seat seat)
         {
             SectionName = seat.Row.Section.Name;

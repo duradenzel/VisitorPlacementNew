@@ -65,11 +65,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj",
+      "projectUniqueName": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj",
       "projectName": "VisitorPlacementLogic",
-      "projectPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj",
+      "projectPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj",
       "packagesPath": "C:\\Users\\Huijb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\obj\\",
+      "outputPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Huijb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -86,8 +86,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj": {
-              "projectPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj"
+            "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj": {
+              "projectPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj"
             }
           }
         }

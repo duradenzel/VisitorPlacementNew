@@ -19,7 +19,7 @@ namespace VisitorPlacementLogic
                 .RuleFor(v => v.Name, f => f.Name.FullName())
                 .RuleFor(v => v.DateOfBirth, f => f.Date.Between(DateTime.Now.AddYears(-60), DateTime.Now))
                 .RuleFor(v => v.IsAdult, (f, v) => (DateTime.Now - v.DateOfBirth).TotalDays >= 365 * 12)
-                .RuleFor(v => v.RegistrationDate, f => f.Date.Past());
+                .RuleFor(v => v.RegistrationDate, f => f.Date.Between(DateTime.Now.AddYears(-1), DateTime.Now.AddDays(30)));
 
 
             for (int i = 0; i < count; i++)
@@ -36,6 +36,7 @@ namespace VisitorPlacementLogic
             Random r = new Random();
             int groupId = 1;
             List<Visitor> visitorsCopy = new List<Visitor>(visitors);
+            visitorsCopy.RemoveAll(v => v.IsAllowedAccess == false);
 
             List<Group> groups = new List<Group>();
 
@@ -66,20 +67,20 @@ namespace VisitorPlacementLogic
             
         }
 
-        public List<Visitor> UpdateVisitorIds(List<Group> groups, List<Visitor> visitors){
-              foreach (var group in groups)
-            {
-                foreach (var visitor in group.Visitors)
-                {
-                    var v = visitors.FirstOrDefault(v => v.Id == visitor.Id);
-                    if (v != null)
-                    {
-                        v.GroupId = group.Id;
-                    }
-                }
-            }
-            return visitors;
-        }
+        // public List<Visitor> UpdateVisitorIds(List<Group> groups, List<Visitor> visitors){
+        //       foreach (var group in groups)
+        //     {
+        //         foreach (var visitor in group.Visitors)
+        //         {
+        //             var v = visitors.FirstOrDefault(v => v.Id == visitor.Id);
+        //             if (v != null)
+        //             {
+        //                 v.GroupId = group.Id;
+        //             }
+        //         }
+        //     }
+        //     return visitors;
+        // }
 
 
     }

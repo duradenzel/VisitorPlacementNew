@@ -191,11 +191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
+      "projectUniqueName": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
       "projectName": "VisitorPlacement",
-      "projectPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
+      "projectPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\VisitorPlacement.csproj",
       "packagesPath": "C:\\Users\\Huijb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\obj\\",
+      "outputPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Huijb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -212,11 +212,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj": {
-              "projectPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj"
+            "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj": {
+              "projectPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementLogic\\VisitorPlacementLogic.csproj"
             },
-            "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj": {
-              "projectPath": "C:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj"
+            "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj": {
+              "projectPath": "c:\\Users\\Huijb\\OneDrive\\Bureaublad\\VisitorPlacement\\VisitorPlacementModels\\VisitorPlacementModels.csproj"
             }
           }
         }
