@@ -1,0 +1,76 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "VisitorPlacement/1.0.0": {
+        "dependencies": {
+          "Bogus": "34.0.2",
+          "VisitorPlacementLogic": "1.0.0",
+          "VisitorPlacementModels": "1.0.0",
+          "popper.js": "1.16.1"
+        },
+        "runtime": {
+          "VisitorPlacement.dll": {}
+        }
+      },
+      "Bogus/34.0.2": {
+        "runtime": {
+          "lib/net6.0/Bogus.dll": {
+            "assemblyVersion": "34.0.2.0",
+            "fileVersion": "34.0.2.0"
+          }
+        }
+      },
+      "popper.js/1.16.1": {},
+      "VisitorPlacementLogic/1.0.0": {
+        "dependencies": {
+          "Bogus": "34.0.2",
+          "VisitorPlacementModels": "1.0.0"
+        },
+        "runtime": {
+          "VisitorPlacementLogic.dll": {}
+        }
+      },
+      "VisitorPlacementModels/1.0.0": {
+        "runtime": {
+          "VisitorPlacementModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VisitorPlacement/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bogus/34.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2KQAuMn3fLAQ2r6jeiffZnpv0bi3GCW3iRB2v1KeHIEBu8MNTh9dBlLTZwGvM0pr+9doKkU8L5JgCURmTmT88A==",
+      "path": "bogus/34.0.2",
+      "hashPath": "bogus.34.0.2.nupkg.sha512"
+    },
+    "popper.js/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "path": "popper.js/1.16.1",
+      "hashPath": "popper.js.1.16.1.nupkg.sha512"
+    },
+    "VisitorPlacementLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VisitorPlacementModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
